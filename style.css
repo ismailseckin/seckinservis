@@ -630,7 +630,7 @@ body {
   align-items: center;
 }
 .whyus-left .section-tag { background: rgba(249,115,22,0.2); color: #fba96e; }
-.whyus-left .section-title { color: var(--white); }
+.whyus-left .section-title { color: var(--accent); }
 .whyus-left .section-sub { color: rgba(255,255,255,0.88); }
 .whyus-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .whyus-card {
