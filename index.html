@@ -1,490 +1,510 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Seçkin Servis | CNC Teknik Servis, Yedek Parça & Danışmanlık – İzmir</title>
-  <meta name="description" content="İzmir'de tüm marka ve model CNC metal işleme makinelerine teknik servis, yedek parça ve danışmanlık hizmetleri. Spindle tamiri, eksen bakımı, elektrik & elektronik servis." />
-  <meta name="keywords" content="CNC teknik servis, CNC yedek parça, spindle tamiri, CNC bakım, İzmir CNC servis, metal işleme makinesi tamiri" />
+  <meta name="description"
+    content="İzmir'de tüm marka ve model CNC metal işleme makinelerine teknik servis, yedek parça ve danışmanlık hizmetleri. Spindle tamiri, eksen bakımı, elektrik & elektronik servis." />
+  <meta name="keywords"
+    content="CNC teknik servis, CNC yedek parça, spindle tamiri, CNC bakım, İzmir CNC servis, metal işleme makinesi tamiri" />
   <meta name="author" content="Seçkin Servis" />
   <link rel="stylesheet" href="style.css" />
   <!-- Favicon emoji fallback -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>" />
 </head>
+
 <body>
 
-<!-- ════════════════════════ NAVBAR ════════════════════════ -->
-<nav id="navbar">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo">
-        <img src="logo.png" alt="Seçkin Servis Logo" />
-        <div class="nav-logo-text">
-          <span>Seçkin Servis</span>
-          <span>CNC TEKNİK SERVİS</span>
-        </div>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#about">Hakkımızda</a></li>
-        <li><a href="#services">Hizmetler</a></li>
-        <li><a href="#whyus">Neden Biz?</a></li>
-        <li><a href="#contact" class="nav-cta">İletişim</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Menü">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</nav>
-
-<!-- Mobile Nav -->
-<div class="mobile-nav" id="mobileNav">
-  <button class="mobile-nav-close" id="mobileClose">✕</button>
-  <a href="#about" class="mobile-link">Hakkımızda</a>
-  <a href="#services" class="mobile-link">Hizmetler</a>
-  <a href="#whyus" class="mobile-link">Neden Biz?</a>
-  <a href="#contact" class="mobile-link">İletişim</a>
-</div>
-
-<!-- ════════════════════════ HERO ══════════════════════════ -->
-<section id="hero">
-  <div class="hero-bg-pattern"></div>
-  <div class="hero-glow"></div>
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-text fade-up">
-        <div class="hero-badge">Uzman CNC Teknik Servis – İzmir</div>
-        <h1 class="hero-title">
-          CNC Makineniz İçin
-          <span class="highlight">Güvenilir Teknik Servis</span>
-        </h1>
-        <p class="hero-desc">
-          Tüm marka ve model CNC metal işleme makinelerine yönelik yedek parça temini,
-          teknik servis ve danışmanlık hizmetleri. Spindle tamirinden elektrik servise
-          kadar eksiksiz çözümler.
-        </p>
-        <div class="hero-btns">
-          <a href="#contact" class="btn btn-primary">
-            <span>📞</span> Hemen Arayın
-          </a>
-          <a href="#services" class="btn btn-outline">
-            <span>⚙️</span> Hizmetlerimiz
-          </a>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <span class="hero-stat-num">500+</span>
-            <span class="hero-stat-label">Tamamlanan Proje</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-num">100+</span>
-            <span class="hero-stat-label">Memnun Müşteri</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-num">7/24</span>
-            <span class="hero-stat-label">Teknik Destek</span>
-          </div>
-        </div>
-      </div>
-      <div class="hero-visual fade-up" style="transition-delay:0.2s">
-        <div class="hero-card-stack">
-          <div class="hero-card hero-card-main">
-            <div>
-              <span class="hc-icon">⚙️</span>
-              <p class="hc-title">CNC Teknik Servis Uzmanı</p>
-              <p class="hc-sub">Tüm marka &amp; model CNC metal işleme makinelerine hızlı, güvenilir ve profesyonel servis hizmetleri sunuyoruz.</p>
-              <div class="hc-tags">
-                <span class="hc-tag">Fanuc</span>
-                <span class="hc-tag">Siemens</span>
-                <span class="hc-tag">Mitsubishi</span>
-                <span class="hc-tag">Heidenhain</span>
-                <span class="hc-tag">Mazak</span>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);">
-              <div style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.1rem;">👷</div>
-              <div>
-                <div style="color:white;font-size:0.82rem;font-weight:600;">İsmail – Uzman Teknisyen</div>
-                <div style="color:rgba(255,255,255,0.5);font-size:0.72rem;">İzmir, Türkiye</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════ FEATURES BAR ══════════════════ -->
-<div id="features-bar">
-  <div class="container">
-    <div class="features-bar-inner">
-      <div class="feat-bar-item fade-up">
-        <div class="feat-bar-icon">⚡</div>
-        <div class="feat-bar-text">
-          <span>Hızlı Müdahale</span>
-          <span>Aynı gün servis imkânı</span>
-        </div>
-      </div>
-      <div class="feat-bar-item fade-up">
-        <div class="feat-bar-icon">🏆</div>
-        <div class="feat-bar-text">
-          <span>Uzman Kadro</span>
-          <span>Alanında deneyimli teknisyenler</span>
-        </div>
-      </div>
-      <div class="feat-bar-item fade-up">
-        <div class="feat-bar-icon">🔩</div>
-        <div class="feat-bar-text">
-          <span>Orijinal Yedek Parça</span>
-          <span>Geniş stok seçeneği</span>
-        </div>
-      </div>
-      <div class="feat-bar-item fade-up">
-        <div class="feat-bar-icon">📋</div>
-        <div class="feat-bar-text">
-          <span>Garanti Hizmeti</span>
-          <span>İşçilik garantisi</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════ ABOUT ═════════════════════════ -->
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-img-wrap fade-up">
-        <div class="about-img-bg">
-          <div class="about-img-pattern"></div>
-          <span class="about-center-icon">⚙️</span>
-        </div>
-        <div class="about-badge">
-          <span class="about-badge-num">CNC</span>
-          <span class="about-badge-label">Uzman Servis</span>
-        </div>
-      </div>
-      <div class="fade-up" style="transition-delay:0.15s">
-        <span class="section-tag">Hakkımızda</span>
-        <h2 class="section-title">CNC Teknolojisinde<br/>Güvenilir Çözüm Ortağınız</h2>
-        <p class="section-sub">
-          Seçkin Servis olarak İzmir ve çevresindeki fabrikalara, atölyelere ve imalathanelere
-          yıllardır profesyonel CNC teknik servis hizmetleri sunuyoruz. Her marka ve model
-          CNC metal işleme makinesine müdahale edebilecek bilgi ve donanıma sahibiz.
-        </p>
-        <div class="checkmarks">
-          <div class="check-item">
-            <div class="check-icon">✓</div>
-            <p class="check-text">Tüm marka ve model CNC metal işleme makinelerine servis</p>
-          </div>
-          <div class="check-item">
-            <div class="check-icon">✓</div>
-            <p class="check-text">Orijinal ve uyumlu yedek parça temini, hızlı teslimat</p>
-          </div>
-          <div class="check-item">
-            <div class="check-icon">✓</div>
-            <p class="check-text">Uzman danışmanlık ile makine optimizasyonu ve verimlilik artışı</p>
-          </div>
-          <div class="check-item">
-            <div class="check-icon">✓</div>
-            <p class="check-text">Yerinde ve atölyede servis seçenekleri</p>
-          </div>
-        </div>
-        <a href="#contact" class="btn btn-primary">Ücretsiz Fiyat Teklifi Al</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════ SERVICES ══════════════════════ -->
-<section id="services">
-  <div class="container">
-    <div class="services-head fade-up">
-      <span class="section-tag">Hizmetlerimiz</span>
-      <h2 class="section-title">Sunduğumuz CNC Servis Hizmetleri</h2>
-      <p class="section-sub">
-        CNC makinelerinizin tüm sorunlarına tek çatı altında çözüm üretiyoruz.
-        Hızlı, güvenilir ve garantili servis.
-      </p>
-    </div>
-    <div class="services-grid">
-
-      <div class="service-card fade-up">
-        <div class="srv-icon-wrap srv-icon-bg-1">🔄</div>
-        <h3 class="srv-title">Spindle Tamiri & Revizyonu</h3>
-        <p class="srv-desc">CNC makinelerinin kalbi olan spindle motorlarının komple revizyonu, balans ayarı ve yüksek hız testleri.</p>
-        <ul class="srv-list">
-          <li>Spindle motor tamiri</li>
-          <li>Yüksek hız balans ayarı</li>
-          <li>Yatak değişimi</li>
-          <li>Performans testi & kalibrasyon</li>
-        </ul>
-      </div>
-
-      <div class="service-card fade-up" style="transition-delay:0.1s">
-        <div class="srv-icon-wrap srv-icon-bg-2">🎯</div>
-        <h3 class="srv-title">Eksen Tamir & Bakımı</h3>
-        <p class="srv-desc">X, Y, Z eksen sürücü kartları, encoder, vida, rulman ve tüm hareket sistemi bakım ve onarımı.</p>
-        <ul class="srv-list">
-          <li>Servo motor & sürücü tamiri</li>
-          <li>Encoder arıza giderimi</li>
-          <li>Rulman & vida bakımı</li>
-          <li>Eksen kalibrasyonu</li>
-        </ul>
-      </div>
-
-      <div class="service-card fade-up" style="transition-delay:0.2s">
-        <div class="srv-icon-wrap srv-icon-bg-3">⚡</div>
-        <h3 class="srv-title">Elektrik & Elektronik Servis</h3>
-        <p class="srv-desc">CNC kontrol kartları, güç kaynakları, PLC, sürücü kart tamiri ve elektrik pano servisi.</p>
-        <ul class="srv-list">
-          <li>Kontrol kartı tamiri</li>
-          <li>Güç kaynağı revizyonu</li>
-          <li>PLC programlama & bakım</li>
-          <li>Elektrik pano servisi</li>
-        </ul>
-      </div>
-
-      <div class="service-card fade-up" style="transition-delay:0.05s">
-        <div class="srv-icon-wrap srv-icon-bg-4">🔩</div>
-        <h3 class="srv-title">Yedek Parça Temini</h3>
-        <p class="srv-desc">Tüm marka CNC makineleri için orijinal ve uyumlu yedek parçaları geniş stoğumuz ve hızlı tedarik ağımızla sunuyoruz.</p>
-        <ul class="srv-list">
-          <li>Orijinal parça temini</li>
-          <li>Uyumlu alternatif parçalar</li>
-          <li>Rulman, kayış, vida çeşitleri</li>
-          <li>Hızlı teslimat seçenekleri</li>
-        </ul>
-      </div>
-
-      <div class="service-card fade-up" style="transition-delay:0.15s">
-        <div class="srv-icon-wrap srv-icon-bg-5">🛡️</div>
-        <h3 class="srv-title">Periyodik Bakım</h3>
-        <p class="srv-desc">Makinelerinizin ömrünü uzatmak ve beklenmedik duruşları önlemek için düzenli bakım programları oluşturuyoruz.</p>
-        <ul class="srv-list">
-          <li>Programlı bakım planlaması</li>
-          <li>Yağlama & temizlik</li>
-          <li>Önleyici bakım raporlaması</li>
-          <li>Genel makine kontrolü</li>
-        </ul>
-      </div>
-
-      <div class="service-card fade-up" style="transition-delay:0.25s">
-        <div class="srv-icon-wrap srv-icon-bg-6">💡</div>
-        <h3 class="srv-title">Teknik Danışmanlık</h3>
-        <p class="srv-desc">Makine alımı, modernizasyon, retrofit projeleri ve işletme verimliliği için profesyonel danışmanlık hizmeti.</p>
-        <ul class="srv-list">
-          <li>Makine seçim danışmanlığı</li>
-          <li>Retrofit & modernizasyon</li>
-          <li>Verimlilik analizi</li>
-          <li>Operatör eğitimi</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════ WHY US ════════════════════════ -->
-<section id="whyus">
-  <div class="container whyus-inner">
-    <div class="whyus-grid">
-      <div class="fade-up">
-        <span class="section-tag">Neden Seçkin Servis?</span>
-        <h2 class="section-title">İşinizi Durdurma,<br/>Hızlı Çözümler Sunalım</h2>
-        <p class="section-sub">
-          CNC makinenizdeki her arıza üretim kaybı demektir. Seçkin Servis olarak hız,
-          güvenilirlik ve uzman bilgiyle yanınızdayız.
-        </p>
-        <div style="margin-top:32px;">
-          <a href="tel:05372160684" class="btn btn-primary">
-            <span>📞</span> 0537 216 06 84
-          </a>
-        </div>
-      </div>
-      <div class="whyus-cards fade-up" style="transition-delay:0.15s">
-        <div class="whyus-card">
-          <span class="whyus-card-icon">⚡</span>
-          <p class="whyus-card-title">Hızlı Müdahale</p>
-          <p class="whyus-card-text">Acil arızalarda aynı gün yerinde servis imkânı.</p>
-        </div>
-        <div class="whyus-card">
-          <span class="whyus-card-icon">🏆</span>
-          <p class="whyus-card-title">Tecrübeli Ekip</p>
-          <p class="whyus-card-text">Uzman ve deneyimli CNC servis teknisyenleri.</p>
-        </div>
-        <div class="whyus-card">
-          <span class="whyus-card-icon">💰</span>
-          <p class="whyus-card-title">Uygun Fiyat</p>
-          <p class="whyus-card-text">Şeffaf fiyatlandırma, gizli maliyet yok.</p>
-        </div>
-        <div class="whyus-card">
-          <span class="whyus-card-icon">📋</span>
-          <p class="whyus-card-title">Garanti</p>
-          <p class="whyus-card-text">Tüm işçilik ve parça değişimlerinde garanti.</p>
-        </div>
-        <div class="whyus-card">
-          <span class="whyus-card-icon">🌍</span>
-          <p class="whyus-card-title">Geniş Marka Bilgisi</p>
-          <p class="whyus-card-text">Fanuc, Siemens, Mitsubishi, Heidenhain ve daha fazlası.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════ CONTACT ═══════════════════════ -->
-<section id="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div>
-        <span class="section-tag">İletişim</span>
-        <h2 class="section-title">Hemen Bizimle<br/>İletişime Geçin</h2>
-        <p class="section-sub">
-          CNC makinenizle ilgili tüm sorularınız için arayın,
-          yazın veya formu doldurun. En kısa sürede size dönüş yapacağız.
-        </p>
-        <div class="contact-info">
-          <div class="contact-card fade-up">
-            <div class="contact-card-icon">📞</div>
-            <div>
-              <p class="contact-card-label">Telefon</p>
-              <p class="contact-card-value">
-                <a href="tel:05372160684">0537 216 06 84</a>
-              </p>
-            </div>
-          </div>
-          <div class="contact-card fade-up" style="transition-delay:0.1s">
-            <div class="contact-card-icon">✉️</div>
-            <div>
-              <p class="contact-card-label">E-posta</p>
-              <p class="contact-card-value">
-                <a href="mailto:ismail@seçkinservis.com">ismail@seçkinservis.com</a>
-              </p>
-            </div>
-          </div>
-          <div class="contact-card fade-up" style="transition-delay:0.2s">
-            <div class="contact-card-icon">📍</div>
-            <div>
-              <p class="contact-card-label">Konum</p>
-              <p class="contact-card-value">İzmir, Türkiye</p>
-            </div>
-          </div>
-          <div class="contact-card fade-up" style="transition-delay:0.3s">
-            <div class="contact-card-icon">🕐</div>
-            <div>
-              <p class="contact-card-label">Çalışma Saatleri</p>
-              <p class="contact-card-value">Pzt–Cmt 08:00–18:00</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="contact-form-wrap fade-up" style="transition-delay:0.1s">
-        <p class="form-title">Fiyat Teklifi Alın</p>
-        <p class="form-sub">Makine bilgilerinizi paylaşın, size özel teklif hazırlayalım.</p>
-        <form id="contactForm" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Adınız Soyadınız *</label>
-              <input type="text" id="name" name="name" placeholder="Adınız Soyadınız" required />
-            </div>
-            <div class="form-group">
-              <label for="phone">Telefon Numaranız *</label>
-              <input type="tel" id="phone" name="phone" placeholder="05XX XXX XX XX" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">E-posta Adresiniz</label>
-            <input type="email" id="email" name="email" placeholder="ornek@email.com" />
-          </div>
-          <div class="form-group">
-            <label for="service">Hizmet Türü *</label>
-            <select id="service" name="service" required>
-              <option value="">-- Seçiniz --</option>
-              <option value="spindle">Spindle Tamiri & Revizyonu</option>
-              <option value="eksen">Eksen Tamir & Bakımı</option>
-              <option value="elektrik">Elektrik & Elektronik Servis</option>
-              <option value="parca">Yedek Parça Temini</option>
-              <option value="bakim">Periyodik Bakım</option>
-              <option value="danismanlik">Teknik Danışmanlık</option>
-              <option value="diger">Diğer</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="machine">Makine Marka / Model</label>
-            <input type="text" id="machine" name="machine" placeholder="Örn: Mazak VTC-20B / Fanuc 18" />
-          </div>
-          <div class="form-group">
-            <label for="message">Sorun / Notlar</label>
-            <textarea id="message" name="message" placeholder="Makinenizle ilgili yaşadığınız sorunu kısaca anlatın..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" id="form-submit">
-            <span>📤</span> Teklif Talebi Gönder
-          </button>
-          <div class="form-success" id="formSuccess">
-            ✅ Talebiniz alındı! En kısa sürede sizi arayacağız.
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════ FOOTER ════════════════════════ -->
-<footer id="footer">
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo">
+  <!-- ════════════════════════ NAVBAR ════════════════════════ -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">
           <img src="logo.png" alt="Seçkin Servis Logo" />
-          <div class="footer-logo-text">
+          <div class="nav-logo-text">
             <span>Seçkin Servis</span>
             <span>CNC TEKNİK SERVİS</span>
           </div>
-        </div>
-        <p class="footer-desc">
-          İzmir'de tüm marka ve model CNC metal işleme makinelerine yönelik
-          teknik servis, yedek parça ve danışmanlık hizmetleri sunuyoruz.
-        </p>
-      </div>
-      <div class="footer-col">
-        <h4>Hizmetler</h4>
-        <ul class="footer-links">
-          <li><a href="#services">Spindle Tamiri</a></li>
-          <li><a href="#services">Eksen Tamiri</a></li>
-          <li><a href="#services">Elektrik Servisi</a></li>
-          <li><a href="#services">Yedek Parça</a></li>
-          <li><a href="#services">Periyodik Bakım</a></li>
-          <li><a href="#services">Danışmanlık</a></li>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#about">Hakkımızda</a></li>
+          <li><a href="#services">Hizmetler</a></li>
+          <li><a href="#whyus">Neden Biz?</a></li>
+          <li><a href="#contact" class="nav-cta">İletişim</a></li>
         </ul>
-      </div>
-      <div class="footer-col">
-        <h4>İletişim</h4>
-        <ul class="footer-links">
-          <li><a href="tel:05372160684">📞 0537 216 06 84</a></li>
-          <li><a href="mailto:ismail@seçkinservis.com">✉️ ismail@seçkinservis.com</a></li>
-          <li><a href="#contact">📍 İzmir, Türkiye</a></li>
-          <li><a href="https://wa.me/905372160684" target="_blank" rel="noopener">💬 WhatsApp Yaz</a></li>
-        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menü">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2024 Seçkin Servis. Tüm hakları saklıdır.</span>
-      <span>İzmir | CNC Teknik Servis & Yedek Parça</span>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileClose">✕</button>
+    <a href="#about" class="mobile-link">Hakkımızda</a>
+    <a href="#services" class="mobile-link">Hizmetler</a>
+    <a href="#whyus" class="mobile-link">Neden Biz?</a>
+    <a href="#contact" class="mobile-link">İletişim</a>
+  </div>
+
+  <!-- ════════════════════════ HERO ══════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text fade-up">
+          <div class="hero-badge">Uzman CNC Teknik Servis – İzmir</div>
+          <h1 class="hero-title">
+            CNC Makineniz İçin
+            <span class="highlight">Güvenilir Teknik Servis</span>
+          </h1>
+          <p class="hero-desc">
+            Tüm marka ve model CNC metal işleme makinelerine yönelik yedek parça temini,
+            teknik servis ve danışmanlık hizmetleri. Spindle tamirinden elektrik servise
+            kadar eksiksiz çözümler.
+          </p>
+          <div class="hero-btns">
+            <a href="#contact" class="btn btn-primary">
+              <span>📞</span> Hemen Arayın
+            </a>
+            <a href="#services" class="btn btn-outline">
+              <span>⚙️</span> Hizmetlerimiz
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat-num">500+</span>
+              <span class="hero-stat-label">Tamamlanan Proje</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-num">100+</span>
+              <span class="hero-stat-label">Memnun Müşteri</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-num">7/24</span>
+              <span class="hero-stat-label">Teknik Destek</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual fade-up" style="transition-delay:0.2s">
+          <div class="hero-card-stack">
+            <div class="hero-card hero-card-main">
+              <div>
+                <span class="hc-icon">⚙️</span>
+                <p class="hc-title">CNC Teknik Servis Uzmanı</p>
+                <p class="hc-sub">Tüm marka &amp; model CNC metal işleme makinelerine hızlı, güvenilir ve profesyonel
+                  servis hizmetleri sunuyoruz.</p>
+                <div class="hc-tags">
+                  <span class="hc-tag">Fanuc</span>
+                  <span class="hc-tag">Siemens</span>
+                  <span class="hc-tag">Mitsubishi</span>
+                  <span class="hc-tag">Heidenhain</span>
+                  <span class="hc-tag">Mazak</span>
+                </div>
+              </div>
+              <div
+                style="display:flex;align-items:center;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);">
+                <div
+                  style="width:40px;height:40px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.1rem;">
+                  👷</div>
+                <div>
+                  <div style="color:white;font-size:0.82rem;font-weight:600;">İsmail – Uzman Teknisyen</div>
+                  <div style="color:rgba(255,255,255,0.5);font-size:0.72rem;">İzmir, Türkiye</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════ FEATURES BAR ══════════════════ -->
+  <div id="features-bar">
+    <div class="container">
+      <div class="features-bar-inner">
+        <div class="feat-bar-item fade-up">
+          <div class="feat-bar-icon">⚡</div>
+          <div class="feat-bar-text">
+            <span>Hızlı Müdahale</span>
+            <span>Aynı gün servis imkânı</span>
+          </div>
+        </div>
+        <div class="feat-bar-item fade-up">
+          <div class="feat-bar-icon">🏆</div>
+          <div class="feat-bar-text">
+            <span>Uzman Kadro</span>
+            <span>Alanında deneyimli teknisyenler</span>
+          </div>
+        </div>
+        <div class="feat-bar-item fade-up">
+          <div class="feat-bar-icon">🔩</div>
+          <div class="feat-bar-text">
+            <span>Orijinal Yedek Parça</span>
+            <span>Geniş stok seçeneği</span>
+          </div>
+        </div>
+        <div class="feat-bar-item fade-up">
+          <div class="feat-bar-icon">📋</div>
+          <div class="feat-bar-text">
+            <span>Garanti Hizmeti</span>
+            <span>İşçilik garantisi</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
 
-<!-- WhatsApp Float Button -->
-<a href="https://wa.me/905372160684" class="whatsapp-float" target="_blank" rel="noopener" title="WhatsApp ile Yazın" aria-label="WhatsApp">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.562 4.14 1.538 5.875L0 24l6.334-1.508A11.936 11.936 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.805 9.805 0 01-5.051-1.396l-.362-.214-3.758.895.943-3.656-.236-.376A9.808 9.808 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z"/>
-  </svg>
-</a>
+  <!-- ════════════════════════ ABOUT ═════════════════════════ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap fade-up">
+          <div class="about-img-bg">
+            <div class="about-img-pattern"></div>
+            <span class="about-center-icon">⚙️</span>
+          </div>
+          <div class="about-badge">
+            <span class="about-badge-num">CNC</span>
+            <span class="about-badge-label">Uzman Servis</span>
+          </div>
+        </div>
+        <div class="fade-up" style="transition-delay:0.15s">
+          <span class="section-tag">Hakkımızda</span>
+          <h2 class="section-title">CNC Teknolojisinde<br />Güvenilir Çözüm Ortağınız</h2>
+          <p class="section-sub">
+            Seçkin Servis olarak İzmir ve çevresindeki fabrikalara, atölyelere ve imalathanelere
+            yıllardır profesyonel CNC teknik servis hizmetleri sunuyoruz. Her marka ve model
+            CNC metal işleme makinesine müdahale edebilecek bilgi ve donanıma sahibiz.
+          </p>
+          <div class="checkmarks">
+            <div class="check-item">
+              <div class="check-icon">✓</div>
+              <p class="check-text">Tüm marka ve model CNC metal işleme makinelerine servis</p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">✓</div>
+              <p class="check-text">Orijinal ve uyumlu yedek parça temini, hızlı teslimat</p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">✓</div>
+              <p class="check-text">Uzman danışmanlık ile makine optimizasyonu ve verimlilik artışı</p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">✓</div>
+              <p class="check-text">Yerinde ve atölyede servis seçenekleri</p>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Ücretsiz Fiyat Teklifi Al</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script src="script.js"></script>
+  <!-- ════════════════════════ SERVICES ══════════════════════ -->
+  <section id="services">
+    <div class="container">
+      <div class="services-head fade-up">
+        <span class="section-tag">Hizmetlerimiz</span>
+        <h2 class="section-title">Sunduğumuz CNC Servis Hizmetleri</h2>
+        <p class="section-sub">
+          CNC makinelerinizin tüm sorunlarına tek çatı altında çözüm üretiyoruz.
+          Hızlı, güvenilir ve garantili servis.
+        </p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card fade-up">
+          <div class="srv-icon-wrap srv-icon-bg-1">🔄</div>
+          <h3 class="srv-title">Spindle Tamiri & Revizyonu</h3>
+          <p class="srv-desc">CNC makinelerinin kalbi olan spindle motorlarının komple revizyonu, balans ayarı ve yüksek
+            hız testleri.</p>
+          <ul class="srv-list">
+            <li>Spindle motor tamiri</li>
+            <li>Yüksek hız balans ayarı</li>
+            <li>Yatak değişimi</li>
+            <li>Performans testi & kalibrasyon</li>
+          </ul>
+        </div>
+
+        <div class="service-card fade-up" style="transition-delay:0.1s">
+          <div class="srv-icon-wrap srv-icon-bg-2">🎯</div>
+          <h3 class="srv-title">Eksen Tamir & Bakımı</h3>
+          <p class="srv-desc">X, Y, Z eksen sürücü kartları, encoder, vida, rulman ve tüm hareket sistemi bakım ve
+            onarımı.</p>
+          <ul class="srv-list">
+            <li>Servo motor & sürücü tamiri</li>
+            <li>Encoder arıza giderimi</li>
+            <li>Rulman & vida bakımı</li>
+            <li>Eksen kalibrasyonu</li>
+          </ul>
+        </div>
+
+        <div class="service-card fade-up" style="transition-delay:0.2s">
+          <div class="srv-icon-wrap srv-icon-bg-3">⚡</div>
+          <h3 class="srv-title">Elektrik & Elektronik Servis</h3>
+          <p class="srv-desc">CNC kontrol kartları, güç kaynakları, PLC, sürücü kart tamiri ve elektrik pano servisi.
+          </p>
+          <ul class="srv-list">
+            <li>Kontrol kartı tamiri</li>
+            <li>Güç kaynağı revizyonu</li>
+            <li>PLC programlama & bakım</li>
+            <li>Elektrik pano servisi</li>
+          </ul>
+        </div>
+
+        <div class="service-card fade-up" style="transition-delay:0.05s">
+          <div class="srv-icon-wrap srv-icon-bg-4">🔩</div>
+          <h3 class="srv-title">Yedek Parça Temini</h3>
+          <p class="srv-desc">Tüm marka CNC makineleri için orijinal ve uyumlu yedek parçaları geniş stoğumuz ve hızlı
+            tedarik ağımızla sunuyoruz.</p>
+          <ul class="srv-list">
+            <li>Orijinal parça temini</li>
+            <li>Uyumlu alternatif parçalar</li>
+            <li>Rulman, kayış, vida çeşitleri</li>
+            <li>Hızlı teslimat seçenekleri</li>
+          </ul>
+        </div>
+
+        <div class="service-card fade-up" style="transition-delay:0.15s">
+          <div class="srv-icon-wrap srv-icon-bg-5">🛡️</div>
+          <h3 class="srv-title">Periyodik Bakım</h3>
+          <p class="srv-desc">Makinelerinizin ömrünü uzatmak ve beklenmedik duruşları önlemek için düzenli bakım
+            programları oluşturuyoruz.</p>
+          <ul class="srv-list">
+            <li>Programlı bakım planlaması</li>
+            <li>Yağlama & temizlik</li>
+            <li>Önleyici bakım raporlaması</li>
+            <li>Genel makine kontrolü</li>
+          </ul>
+        </div>
+
+        <div class="service-card fade-up" style="transition-delay:0.25s">
+          <div class="srv-icon-wrap srv-icon-bg-6">💡</div>
+          <h3 class="srv-title">Teknik Danışmanlık</h3>
+          <p class="srv-desc">Makine alımı, modernizasyon, retrofit projeleri ve işletme verimliliği için profesyonel
+            danışmanlık hizmeti.</p>
+          <ul class="srv-list">
+            <li>Makine seçim danışmanlığı</li>
+            <li>Retrofit & modernizasyon</li>
+            <li>Verimlilik analizi</li>
+            <li>Operatör eğitimi</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════ WHY US ════════════════════════ -->
+  <section id="whyus">
+    <div class="container whyus-inner">
+      <div class="whyus-grid">
+        <div class="fade-up">
+          <span class="section-tag">Neden Seçkin Servis?</span>
+          <h2 class="section-title">İşinizi Durdurmadan,<br />Hızlı Çözümler Sunalım</h2>
+          <p class="section-sub">
+            CNC makinenizdeki her arıza üretim kaybı demektir. Seçkin Servis olarak hız,
+            güvenilirlik ve uzman bilgiyle yanınızdayız.
+          </p>
+          <div style="margin-top:32px;">
+            <a href="tel:05372160684" class="btn btn-primary">
+              <span>📞</span> 0537 216 06 84
+            </a>
+          </div>
+        </div>
+        <div class="whyus-cards fade-up" style="transition-delay:0.15s">
+          <div class="whyus-card">
+            <span class="whyus-card-icon">⚡</span>
+            <p class="whyus-card-title">Hızlı Müdahale</p>
+            <p class="whyus-card-text">Acil arızalarda aynı gün yerinde servis imkânı.</p>
+          </div>
+          <div class="whyus-card">
+            <span class="whyus-card-icon">🏆</span>
+            <p class="whyus-card-title">Tecrübeli Ekip</p>
+            <p class="whyus-card-text">Uzman ve deneyimli CNC servis teknisyenleri.</p>
+          </div>
+          <div class="whyus-card">
+            <span class="whyus-card-icon">💰</span>
+            <p class="whyus-card-title">Uygun Fiyat</p>
+            <p class="whyus-card-text">Şeffaf fiyatlandırma, gizli maliyet yok.</p>
+          </div>
+          <div class="whyus-card">
+            <span class="whyus-card-icon">📋</span>
+            <p class="whyus-card-title">Garanti</p>
+            <p class="whyus-card-text">Tüm işçilik ve parça değişimlerinde garanti.</p>
+          </div>
+          <div class="whyus-card">
+            <span class="whyus-card-icon">🌍</span>
+            <p class="whyus-card-title">Geniş Marka Bilgisi</p>
+            <p class="whyus-card-text">Fanuc, Siemens, Mitsubishi, Heidenhain ve daha fazlası.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════ CONTACT ═══════════════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <span class="section-tag">İletişim</span>
+          <h2 class="section-title">Hemen Bizimle<br />İletişime Geçin</h2>
+          <p class="section-sub">
+            CNC makinenizle ilgili tüm sorularınız için arayın,
+            yazın veya formu doldurun. En kısa sürede size dönüş yapacağız.
+          </p>
+          <div class="contact-info">
+            <div class="contact-card fade-up">
+              <div class="contact-card-icon">📞</div>
+              <div>
+                <p class="contact-card-label">Telefon</p>
+                <p class="contact-card-value">
+                  <a href="tel:05372160684">0537 216 06 84</a>
+                </p>
+              </div>
+            </div>
+            <div class="contact-card fade-up" style="transition-delay:0.1s">
+              <div class="contact-card-icon">✉️</div>
+              <div>
+                <p class="contact-card-label">E-posta</p>
+                <p class="contact-card-value">
+                  <a href="mailto:ismail@seçkinservis.com">ismail@seçkinservis.com</a>
+                </p>
+              </div>
+            </div>
+            <div class="contact-card fade-up" style="transition-delay:0.2s">
+              <div class="contact-card-icon">📍</div>
+              <div>
+                <p class="contact-card-label">Konum</p>
+                <p class="contact-card-value">İzmir, Türkiye</p>
+              </div>
+            </div>
+            <div class="contact-card fade-up" style="transition-delay:0.3s">
+              <div class="contact-card-icon">🕐</div>
+              <div>
+                <p class="contact-card-label">Çalışma Saatleri</p>
+                <p class="contact-card-value">Pzt–Cmt 08:00–18:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrap fade-up" style="transition-delay:0.1s">
+          <p class="form-title">Fiyat Teklifi Alın</p>
+          <p class="form-sub">Makine bilgilerinizi paylaşın, size özel teklif hazırlayalım.</p>
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Adınız Soyadınız *</label>
+                <input type="text" id="name" name="name" placeholder="Adınız Soyadınız" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon Numaranız *</label>
+                <input type="tel" id="phone" name="phone" placeholder="05XX XXX XX XX" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">E-posta Adresiniz</label>
+              <input type="email" id="email" name="email" placeholder="ornek@email.com" />
+            </div>
+            <div class="form-group">
+              <label for="service">Hizmet Türü *</label>
+              <select id="service" name="service" required>
+                <option value="">-- Seçiniz --</option>
+                <option value="spindle">Spindle Tamiri & Revizyonu</option>
+                <option value="eksen">Eksen Tamir & Bakımı</option>
+                <option value="elektrik">Elektrik & Elektronik Servis</option>
+                <option value="parca">Yedek Parça Temini</option>
+                <option value="bakim">Periyodik Bakım</option>
+                <option value="danismanlik">Teknik Danışmanlık</option>
+                <option value="diger">Diğer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="machine">Makine Marka / Model</label>
+              <input type="text" id="machine" name="machine" placeholder="Örn: Mazak VTC-20B / Fanuc 18" />
+            </div>
+            <div class="form-group">
+              <label for="message">Sorun / Notlar</label>
+              <textarea id="message" name="message"
+                placeholder="Makinenizle ilgili yaşadığınız sorunu kısaca anlatın..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="form-submit">
+              <span>📤</span> Teklif Talebi Gönder
+            </button>
+            <div class="form-success" id="formSuccess">
+              ✅ Talebiniz alındı! En kısa sürede sizi arayacağız.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════ FOOTER ════════════════════════ -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="logo.png" alt="Seçkin Servis Logo" />
+            <div class="footer-logo-text">
+              <span>Seçkin Servis</span>
+              <span>CNC TEKNİK SERVİS</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            İzmir'de tüm marka ve model CNC metal işleme makinelerine yönelik
+            teknik servis, yedek parça ve danışmanlık hizmetleri sunuyoruz.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Hizmetler</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Spindle Tamiri</a></li>
+            <li><a href="#services">Eksen Tamiri</a></li>
+            <li><a href="#services">Elektrik Servisi</a></li>
+            <li><a href="#services">Yedek Parça</a></li>
+            <li><a href="#services">Periyodik Bakım</a></li>
+            <li><a href="#services">Danışmanlık</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>İletişim</h4>
+          <ul class="footer-links">
+            <li><a href="tel:05372160684">📞 0537 216 06 84</a></li>
+            <li><a href="mailto:ismail@seçkinservis.com">✉️ ismail@seçkinservis.com</a></li>
+            <li><a href="#contact">📍 İzmir, Türkiye</a></li>
+            <li><a href="https://wa.me/905372160684" target="_blank" rel="noopener">💬 WhatsApp Yaz</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Seçkin Servis. Tüm hakları saklıdır.</span>
+        <span>İzmir | CNC Teknik Servis & Yedek Parça</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/905372160684" class="whatsapp-float" target="_blank" rel="noopener" title="WhatsApp ile Yazın"
+    aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+      <path
+        d="M12 0C5.373 0 0 5.373 0 12c0 2.136.562 4.14 1.538 5.875L0 24l6.334-1.508A11.936 11.936 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.805 9.805 0 01-5.051-1.396l-.362-.214-3.758.895.943-3.656-.236-.376A9.808 9.808 0 012.182 12C2.182 6.575 6.575 2.182 12 2.182S21.818 6.575 21.818 12 17.425 21.818 12 21.818z" />
+    </svg>
+  </a>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
