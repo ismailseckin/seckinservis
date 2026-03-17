@@ -636,30 +636,28 @@ body {
   border-color: var(--blue-light);
 }
 .ref-logo {
-  height: 80px; /* Boyutu büyüttüm */
+  height: 90px; /* Yüksekliği biraz daha artırdım */
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: var(--transition);
   position: relative;
-  overflow: hidden;
-  padding: 10px;
+  padding: 15px; /* Daha fazla nefes payı */
 }
 .ref-logo img {
-  max-height: 100%;
-  max-width: 180px; /* Genişliği artırdım */
+  max-height: 50px; /* Sabit bir yükseklik sınırı ile hepsini eşitledim */
+  max-width: 140px; /* Geniş logoların (Habaş, Cemer) baskınlığını azalttım */
   width: auto;
   height: auto;
   object-fit: contain;
   filter: grayscale(1) opacity(0.5);
   transition: var(--transition);
   z-index: 2;
-  position: relative;
 }
 .ref-item:hover .ref-logo img {
   filter: grayscale(0) opacity(1);
-  transform: scale(1.05);
+  transform: scale(1.1); /* Hover etkisini güçlendirdim */
 }
 /* Logolar varken arkadaki yazıyı gizlemek için veya daha silik yapmak için */
 .ref-logo::before {
