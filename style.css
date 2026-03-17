@@ -609,6 +609,47 @@ body {
   line-height: 1;
 }
 
+/* ── REFERENCES ─────────────────────────────────────────── */
+#references { padding: 110px 0; background: var(--white); border-bottom: 1px solid var(--gray-200); }
+.ref-head { text-align: center; margin-bottom: 64px; }
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+}
+.ref-item {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 32px 20px;
+  text-align: center;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.ref-item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--blue-light);
+}
+.ref-logo {
+  font-size: 2.5rem;
+  filter: grayscale(1);
+  transition: var(--transition);
+}
+.ref-item:hover .ref-logo {
+  filter: grayscale(0);
+}
+.ref-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
 /* ── WHY US ─────────────────────────────────────────────── */
 #whyus {
   padding: 110px 0;
