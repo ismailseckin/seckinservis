@@ -636,7 +636,7 @@ body {
   border-color: var(--blue-light);
 }
 .ref-logo {
-  height: 50px;
+  height: 80px; /* Boyutu büyüttüm */
   width: 100%;
   display: flex;
   align-items: center;
@@ -644,34 +644,43 @@ body {
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  padding: 10px;
 }
 .ref-logo img {
   max-height: 100%;
-  max-width: 160px;
+  max-width: 180px; /* Genişliği artırdım */
   width: auto;
   height: auto;
   object-fit: contain;
   filter: grayscale(1) opacity(0.5);
   transition: var(--transition);
   z-index: 2;
+  position: relative;
 }
 .ref-item:hover .ref-logo img {
   filter: grayscale(0) opacity(1);
+  transform: scale(1.05);
 }
-/* Text Fallback */
+/* Logolar varken arkadaki yazıyı gizlemek için veya daha silik yapmak için */
 .ref-logo::before {
   content: attr(data-initials);
   position: absolute;
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
-  font-size: 24px;
+  font-size: 20px;
   color: var(--blue-light);
-  opacity: 0.15;
+  opacity: 0.1; /* Daha da görünmez yaptım */
   z-index: 1;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
-.ref-item:hover .ref-logo::before {
-  opacity: 0.3;
+/* Eğer logo yüklendiyse (yani img orada varsa) yazıyı tamamen gizleyebiliriz */
+.ref-logo img[src]:not([src=""]) + .ref-logo::before {
+  display: none;
 }
 .ref-name {
   font-family: 'Poppins', sans-serif;
