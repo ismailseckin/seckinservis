@@ -1095,13 +1095,15 @@
         }
 
         .logout-btn {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(192, 57, 43, 0.85);
             border: none;
             border-radius: 8px;
             color: #fff;
-            font-size: 12px;
-            padding: 6px 10px;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 7px 14px;
             cursor: pointer;
+            letter-spacing: 0.3px;
         }
     </style>
 </head>
@@ -1220,7 +1222,7 @@
                 const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
                 const { getFirestore, collection, getDocs, doc, setDoc, deleteDoc } =
                     await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
-                const { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } =
+                const { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, browserSessionPersistence, setPersistence } =
                     await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js");
 
                 const app = initializeApp(FB_CONFIG);
@@ -1228,6 +1230,9 @@
                 _fbFS = { collection, getDocs, doc, setDoc, deleteDoc };
                 _auth = getAuth(app);
                 _authFns = { signInWithEmailAndPassword, signOut };
+                
+                // Her tarayıcı oturumunda giriş zorla (sekme/pencere kapanınca oturum biter)
+                await setPersistence(_auth, browserSessionPersistence);
 
                 onAuthStateChanged(_auth, async (user) => {
                     if (user) {
