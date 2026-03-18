@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.5, maximum-scale=3.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="theme-color" content="#1B3F6E">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Seçkin Servis — Teknik Kayıt</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    <style>
+        :root {
+            --bg: #0f1923;
+            --surface: #162233;
+            --card: #1e2f42;
+            --border: #2a3f57;
+            --accent: #1B3F6E;
+            --blue: #2E6DAD;
+            --gold: #C8960A;
+            --gold2: #f0b429;
+            --text: #e8edf2;
+            --muted: #7a90a8;
+            --danger: #c0392b;
+            --success: #27ae60;
+            --warn: #e67e22;
+            --radius: 10px;
+            --header: 56px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        @media screen and (min-resolution: 2dppx) {
+            html {
+                font-size: 20px;
+            }
+        }
+
+        @media screen and (min-resolution: 3dppx) {
+            html {
+                font-size: 24px;
+            }
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            min-height: 100vh;
+            overscroll-behavior: none;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* ── HEADER ── */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: var(--header);
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 16px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-logo {
+            width: 36px;
+            height: 36px;
+            background: var(--gold);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .header-title {
+            flex: 1;
+        }
+
+        .header-title h1 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .header-title p {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .header-btn {
+            background: rgba(255, 255, 255, 0.12);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 8px 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-btn:active {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .app {
+            padding-top: var(--header);
+            min-height: 100vh;
+        }
+
+        .view {
+            display: none;
+            padding: 16px;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        /* ── LİSTE ── */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 12px;
+            text-align: center;
+        }
+
+        .stat-num {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--gold2);
+        }
+
+        .stat-lbl {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .search-bar {
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text);
+            font-size: 15px;
+            padding: 12px 16px 12px 44px;
+            outline: none;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--blue);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+        }
+
+        .filters {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            margin-bottom: 16px;
+            scrollbar-width: none;
+        }
+
+        .filters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-btn {
+            flex-shrink: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            color: var(--muted);
+            font-size: 13px;
+            padding: 6px 14px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .filter-btn.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: #fff;
+        }
+
+        .records {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .record-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            cursor: pointer;
+            border-left: 3px solid var(--blue);
+            transition: transform 0.15s;
+        }
+
+        .record-card:active {
+            transform: scale(0.99);
+        }
+
+        .record-card.solved {
+            border-left-color: var(--success);
+        }
+
+        .record-card.urgent {
+            border-left-color: var(--danger);
+        }
+
+        .record-card.pending {
+            border-left-color: var(--warn);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .card-machine {
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        .card-sub {
+            font-size: 14px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .card-badge {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .badge-solved {
+            background: rgba(39, 174, 96, 0.15);
+            color: #2ecc71;
+        }
+
+        .badge-open {
+            background: rgba(192, 57, 43, 0.15);
+            color: #e74c3c;
+        }
+
+        .badge-pending {
+            background: rgba(230, 126, 34, 0.15);
+            color: #f39c12;
+        }
+
+        .card-fault {
+            font-size: 15px;
+            color: var(--muted);
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .card-tag {
+            font-size: 13px;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--muted);
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.4;
+        }
+
+        .empty h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        /* ── WIZARD ── */
+        .wizard-progress {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: none;
+        }
+
+        .wizard-progress::-webkit-scrollbar {
+            display: none;
+        }
+
+        .step-dot {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--muted);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .step-dot.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: #fff;
+        }
+
+        .step-dot.done {
+            background: var(--success);
+            border-color: var(--success);
+            color: #fff;
+        }
+
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background: var(--border);
+            min-width: 8px;
+        }
+
+        .step-line.done {
+            background: var(--success);
+        }
+
+        .wizard-header {
+            margin-bottom: 20px;
+        }
+
+        .wizard-step-label {
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .wizard-step-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .form-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+
+        .form-section-title {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-grid.full {
+            grid-template-columns: 1fr;
+        }
+
+        @media (max-width: 480px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .field label {
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .field input,
+        .field textarea,
+        .field select {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 14px;
+            padding: 10px 12px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .field input:focus,
+        .field textarea:focus,
+        .field select:focus {
+            border-color: var(--blue);
+        }
+
+        .field textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .field select option {
+            background: var(--card);
+        }
+
+        /* Navigasyon */
+        .wizard-nav {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+            padding-bottom: 32px;
+        }
+
+        .nav-back {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 13px 20px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .nav-next {
+            flex: 1;
+            background: var(--blue);
+            border: none;
+            border-radius: var(--radius);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 13px;
+            cursor: pointer;
+        }
+
+        .nav-next:active {
+            background: #2562a0;
+        }
+
+        .nav-save {
+            background: var(--success);
+        }
+
+        /* Denemeler */
+        .attempt-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+
+        .attempt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .attempt-num {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .attempt-del {
+            background: rgba(192, 57, 43, 0.15);
+            border: none;
+            border-radius: 6px;
+            color: #e74c3c;
+            padding: 4px 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        @media (min-width: 480px) {
+            .result-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        .result-btn {
+            padding: 8px 4px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.15s;
+        }
+
+        .result-btn.sel-solved {
+            background: rgba(39, 174, 96, 0.2);
+            border-color: var(--success);
+            color: #2ecc71;
+        }
+
+        .result-btn.sel-partial {
+            background: rgba(243, 156, 18, 0.2);
+            border-color: #f39c12;
+            color: #f39c12;
+        }
+
+        .result-btn.sel-none {
+            background: rgba(192, 57, 43, 0.2);
+            border-color: var(--danger);
+            color: #e74c3c;
+        }
+
+        .result-btn.sel-worse {
+            background: rgba(155, 89, 182, 0.2);
+            border-color: #9b59b6;
+            color: #9b59b6;
+        }
+
+        .result-btn.sel-waiting {
+            background: rgba(46, 109, 173, 0.2);
+            border-color: var(--blue);
+            color: #5dade2;
+        }
+
+        .add-attempt-btn {
+            width: 100%;
+            background: rgba(46, 109, 173, 0.1);
+            border: 1.5px dashed var(--blue);
+            border-radius: var(--radius);
+            color: var(--blue);
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px;
+            cursor: pointer;
+            margin-bottom: 14px;
+        }
+
+        /* Parametreler */
+        .param-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .param-row input {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 13px;
+            padding: 8px 10px;
+            outline: none;
+        }
+
+        .param-row input:focus {
+            border-color: var(--blue);
+        }
+
+        .remove-btn {
+            background: rgba(192, 57, 43, 0.15);
+            border: none;
+            border-radius: 6px;
+            color: #e74c3c;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .add-param-btn {
+            width: 100%;
+            background: rgba(46, 109, 173, 0.1);
+            border: 1px dashed var(--blue);
+            border-radius: 8px;
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 9px;
+            cursor: pointer;
+        }
+
+        /* Fotoğraf */
+        .photo-area {
+            border: 1.5px dashed var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .photo-area input {
+            display: none;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .photo-thumb {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .photo-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .del-photo {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: rgba(0, 0, 0, 0.65);
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Detay */
+        .detail-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+
+        .detail-section-title {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .detail-field label {
+            font-size: 11px;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .detail-field p {
+            font-size: 14px;
+        }
+
+        .detail-text {
+            font-size: 14px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+
+        .detail-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 11px;
+            border-radius: 8px;
+            border: none;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .action-edit {
+            background: var(--blue);
+            color: #fff;
+        }
+
+        .action-delete {
+            background: rgba(192, 57, 43, 0.15);
+            color: #e74c3c;
+            border: 1px solid rgba(192, 57, 43, 0.3);
+        }
+
+        .attempt-detail {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 10px;
+        }
+
+        .attempt-detail-num {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .result-pill {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .pill-solved {
+            background: rgba(39, 174, 96, 0.2);
+            color: #2ecc71;
+        }
+
+        .pill-partial {
+            background: rgba(243, 156, 18, 0.2);
+            color: #f39c12;
+        }
+
+        .pill-none {
+            background: rgba(192, 57, 43, 0.2);
+            color: #e74c3c;
+        }
+
+        .pill-worse {
+            background: rgba(155, 89, 182, 0.2);
+            color: #9b59b6;
+        }
+
+        .pill-waiting {
+            background: rgba(46, 109, 173, 0.2);
+            color: #5dade2;
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .param-table th,
+        .param-table td {
+            text-align: left;
+            padding: 8px 10px;
+            font-size: 13px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .param-table th {
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: var(--success);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 20px;
+            z-index: 999;
+            transition: transform 0.3s;
+            white-space: nowrap;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast.error {
+            background: var(--danger);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(0, 0, 0, 0.65);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            max-width: 340px;
+            width: 100%;
+        }
+
+        .modal h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .modal p {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .modal-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .modal-btns button {
+            flex: 1;
+            padding: 11px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background: var(--surface);
+            color: var(--text);
+        }
+
+        .btn-confirm {
+            background: var(--danger);
+            color: #fff;
+        }
+
+        .back-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--muted);
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .page-title {
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* ── GİRİŞ EKRANI ── */
+        .login-screen {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 500;
+            background: var(--bg);
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .login-screen.show {
+            display: flex;
+        }
+
+        .login-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px 24px;
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .login-logo {
+            width: 56px;
+            height: 56px;
+            background: var(--gold);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            color: #fff;
+            margin: 0 auto 20px;
+        }
+
+        .login-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .login-sub {
+            text-align: center;
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .login-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        .login-field label {
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .login-field input {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 15px;
+            padding: 12px 14px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .login-field input:focus {
+            border-color: var(--blue);
+        }
+
+        .login-btn {
+            width: 100%;
+            background: var(--blue);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 14px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .login-btn:active {
+            background: #2562a0;
+        }
+
+        .login-error {
+            background: rgba(192, 57, 43, 0.15);
+            border: 1px solid rgba(192, 57, 43, 0.3);
+            border-radius: 8px;
+            color: #e74c3c;
+            font-size: 13px;
+            padding: 10px 14px;
+            margin-top: 12px;
+            display: none;
+            text-align: center;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.12);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 12px;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-logo">SS</div>
+        <div class="header-title">
+            <h1>Seçkin Servis</h1>
+            <p id="header-sub">Teknik Kayıt Sistemi</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+            <button class="header-btn" id="header-action-btn" onclick="startNewRecord()">+ Yeni Kayıt</button>
+            <button class="logout-btn" id="logout-btn" onclick="doLogout()" style="display:none">Çıkış</button>
+        </div>
+    </header>
+    <div id="sync-status"
+        style="display:none;position:fixed;top:56px;left:0;right:0;z-index:99;background:#2E6DAD;color:#fff;font-size:12px;text-align:center;padding:4px;">
+    </div>
+
+    <!-- GİRİŞ EKRANI -->
+    <div class="login-screen show" id="login-screen">
+        <div class="login-box">
+            <div class="login-logo">SS</div>
+            <div class="login-title">Seçkin Servis</div>
+            <div class="login-sub">Teknik Kayıt Sistemine Giriş</div>
+            <div class="login-field">
+                <label>E-posta</label>
+                <input type="email" id="login-email" placeholder="ornek@email.com" autocomplete="email">
+            </div>
+            <div class="login-field">
+                <label>Şifre</label>
+                <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password"
+                    onkeydown="if(event.key==='Enter')doLogin()">
+            </div>
+            <button class="login-btn" onclick="doLogin()">Giriş Yap</button>
+            <div class="login-error" id="login-error"></div>
+        </div>
+    </div>
+
+    <div class="app">
+
+        <!-- LİSTE -->
+        <div class="view active" id="view-list">
+            <div class="stats-bar" id="stats-bar"></div>
+            <div class="search-bar">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    width="18" height="18">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input type="text" id="search-input" placeholder="Makina, marka, arıza ara..." oninput="renderList()">
+            </div>
+            <div class="filters">
+                <button class="filter-btn active" onclick="setFilter('all',this)">Tümü</button>
+                <button class="filter-btn" onclick="setFilter('solved',this)">Çözüldü</button>
+                <button class="filter-btn" onclick="setFilter('open',this)">Açık</button>
+                <button class="filter-btn" onclick="setFilter('pending',this)">Beklemede</button>
+            </div>
+            <div class="records" id="records-list"></div>
+        </div>
+
+        <!-- WIZARD -->
+        <div class="view" id="view-wizard">
+            <div class="wizard-progress" id="wizard-progress"></div>
+            <div class="wizard-header">
+                <div class="wizard-step-label" id="step-label"></div>
+                <div class="wizard-step-title" id="step-title"></div>
+            </div>
+            <div id="step-body"></div>
+            <div class="wizard-nav" id="wizard-nav"></div>
+        </div>
+
+        <!-- DETAY -->
+        <div class="view" id="view-detail">
+            <div id="detail-content"></div>
+        </div>
+
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <div class="overlay" id="delete-overlay">
+        <div class="modal">
+            <h3>Kaydı Sil</h3>
+            <p>Bu kaydı kalıcı olarak silmek istediğinden emin misin?</p>
+            <div class="modal-btns">
+                <button class="btn-cancel" onclick="closeModal()">İptal</button>
+                <button class="btn-confirm" onclick="confirmDelete()">Sil</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ── AYARLAR ─────────────────────────────
+        const IMGBB_API_KEY = "b5517ca95890b002ca7d92be06fb9ae1"; // ImgBB API Key
+
+        // ── FİREBASE BAĞLANTISI ─────────────────────────────
+        const FB_CONFIG = {
+            apiKey: "AIzaSyDm0VU9EFDv5WEFSmH9fr6O3gT7c4v9arM",
+            authDomain: "seckin-servis.firebaseapp.com",
+            projectId: "seckin-servis",
+            storageBucket: "seckin-servis.firebasestorage.app",
+            messagingSenderId: "1076585878636",
+            appId: "1:1076585878636:web:ec1013872b3ca678883449"
+        };
+
+        let db = null;
+        let fbReady = false;
+        let _fbFS = {};
+        let _auth = null;
+        let currentUser = null;
+
+        async function initFirebase() {
+            try {
+                const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
+                const { getFirestore, collection, getDocs, doc, setDoc, deleteDoc } =
+                    await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+                const { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } =
+                    await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js");
+
+                const app = initializeApp(FB_CONFIG);
+                db = getFirestore(app);
+                _fbFS = { collection, getDocs, doc, setDoc, deleteDoc };
+                _auth = getAuth(app);
+                _authFns = { signInWithEmailAndPassword, signOut };
+
+                onAuthStateChanged(_auth, async (user) => {
+                    if (user) {
+                        currentUser = user;
+                        document.getElementById('login-screen').classList.remove('show');
+                        document.getElementById('logout-btn').style.display = 'block';
+                        fbReady = true;
+                        showSyncStatus("Buluta bağlanıyor...");
+                        await syncFromCloud();
+                        showSyncStatus("");
+                    } else {
+                        currentUser = null;
+                        fbReady = false;
+                        document.getElementById('login-screen').classList.add('show');
+                        document.getElementById('logout-btn').style.display = 'none';
+                    }
+                });
+            } catch (e) {
+                console.warn("Firebase offline:", e);
+                showSyncStatus("");
+            }
+        }
+
+        let _authFns = {};
+
+        async function doLogin() {
+            const email = document.getElementById('login-email').value.trim();
+            const pass = document.getElementById('login-password').value;
+            const errEl = document.getElementById('login-error');
+            errEl.style.display = 'none';
+            if (!email || !pass) { errEl.textContent = 'E-posta ve şifre gerekli'; errEl.style.display = 'block'; return; }
+            try {
+                const btn = document.querySelector('.login-btn');
+                btn.textContent = 'Giriş yapılıyor...'; btn.disabled = true;
+                await _authFns.signInWithEmailAndPassword(_auth, email, pass);
+                btn.textContent = 'Giriş Yap'; btn.disabled = false;
+            } catch (e) {
+                const btn = document.querySelector('.login-btn');
+                btn.textContent = 'Giriş Yap'; btn.disabled = false;
+                const msgs = { 'auth/invalid-credential': 'E-posta veya şifre hatalı', 'auth/user-not-found': 'Kullanıcı bulunamadı', 'auth/wrong-password': 'Şifre hatalı', 'auth/too-many-requests': 'Çok fazla deneme, bekleyin' };
+                errEl.textContent = msgs[e.code] || `Giriş başarısız: ${e.message || e.code || 'Bilinmeyen hata'}`;
+                errEl.style.display = 'block';
+                console.error("Login Error:", e);
+            }
+        }
+
+        async function doLogout() {
+            await _authFns.signOut(_auth);
+            showList();
+        }
+
+        function showSyncStatus(msg) {
+            let el = document.getElementById("sync-status");
+            if (!el) return;
+            el.textContent = msg;
+            el.style.display = msg ? "block" : "none";
+        }
+
+        const DB_KEY = "seckin_records_v2";
+        function getLocalRecords() { try { return JSON.parse(localStorage.getItem(DB_KEY)) || []; } catch { return []; } }
+        function saveLocalRecords(r) { localStorage.setItem(DB_KEY, JSON.stringify(r)); }
+
+        async function syncFromCloud() {
+            if (!fbReady || !db) return;
+            try {
+                const snap = await _fbFS.getDocs(_fbFS.collection(db, "records"));
+                const cloud = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+                if (cloud.length > 0) { saveLocalRecords(cloud); }
+                renderList();
+            } catch (e) { console.warn("Sync hatası:", e); }
+        }
+
+        async function saveToCloud(record) {
+            if (!fbReady || !db) return;
+            try {
+                let cloudPhotos = [];
+                for (let i = 0; i < (record.photos || []).length; i++) {
+                    const p = record.photos[i];
+                    if (p.startsWith("data:image") && IMGBB_API_KEY) {
+                        showSyncStatus("Fotoğraf yükleniyor (" + (i + 1) + "/" + record.photos.length + ")...");
+                        try {
+                            const base64Data = p.split(',')[1];
+                            const formData = new FormData();
+                            formData.append("image", base64Data);
+                            const res = await fetch("https://api.imgbb.com/1/upload?key=" + IMGBB_API_KEY, {
+                                method: "POST",
+                                body: formData
+                            });
+                            const data = await res.json();
+                            if (data && data.success) {
+                                cloudPhotos.push(data.data.url);
+                            } else {
+                                cloudPhotos.push(p); // Yükleme başarısızsa resmi cihazda tut
+                            }
+                        } catch (err) {
+                            console.warn("ImgBB Hatası:", err);
+                            cloudPhotos.push(p);
+                        }
+                    } else {
+                        cloudPhotos.push(p);
+                    }
+                }
+                showSyncStatus("Kayıt buluta eşitleniyor...");
+                const r = { ...record, photos: cloudPhotos };
+                await _fbFS.setDoc(_fbFS.doc(db, "records", record.id), r);
+
+                // Ağır Base64'leri URL ile temizle
+                let locals = getLocalRecords();
+                locals = locals.map(loc => loc.id === record.id ? r : loc);
+                saveLocalRecords(locals);
+
+                showSyncStatus("");
+                // Sadece geçerli sayfadaysak listeyi otomatik yenile
+                if (document.getElementById('view-list').classList.contains('active')) {
+                    renderList();
+                }
+            } catch (e) {
+                console.warn("Kayıt hatası:", e);
+                showSyncStatus("");
+            }
+        }
+
+        async function deleteFromCloud(id) {
+            if (!fbReady || !db) return;
+            try { await _fbFS.deleteDoc(_fbFS.doc(db, "records", id)); }
+            catch (e) { console.warn("Silme hatası:", e); }
+        }
+
+        function getRecords() { return getLocalRecords(); }
+
+        function saveRecords(records) {
+            saveLocalRecords(records);
+            records.forEach(r => saveToCloud(r));
+        }
+
+        let currentFilter = 'all';
+        let deleteId = null;
+        let editingId = null;
+        let currentStep = 0;
+        let draft = {};
+        let photoData = [];
+
+        const STEPS = [
+            { label: 'Adım 1 / 7', title: 'Makina Bilgileri' },
+            { label: 'Adım 2 / 7', title: 'Arıza Tanımı' },
+            { label: 'Adım 3 / 7', title: 'Teşhis' },
+            { label: 'Adım 4 / 7', title: 'Denemeler & Sonuçlar' },
+            { label: 'Adım 5 / 7', title: 'Kesin Çözüm & Parçalar' },
+            { label: 'Adım 6 / 7', title: 'Parametre & Ayar Değerleri' },
+            { label: 'Adım 7 / 7', title: 'Notlar & Kaydet' },
+        ];
+
+        function showView(id) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function showList() {
+            document.getElementById('header-action-btn').textContent = '+ Yeni Kayıt';
+            document.getElementById('header-action-btn').onclick = startNewRecord;
+            document.getElementById('header-sub').textContent = 'Teknik Kayıt Sistemi';
+            showView('view-list');
+            renderList();
+        }
+
+        function startNewRecord() {
+            editingId = null;
+            draft = { attempts: [], params: [] };
+            photoData = [];
+            currentStep = 0;
+            showWizard();
+        }
+
+        function editRecord(id) {
+            const r = getRecords().find(x => x.id === id);
+            if (!r) return;
+            editingId = id;
+            draft = JSON.parse(JSON.stringify(r));
+            photoData = draft.photos || [];
+            currentStep = 0;
+            showWizard();
+        }
+
+        function showWizard() {
+            document.getElementById('header-sub').textContent = editingId ? 'Düzenleniyor' : 'Yeni Kayıt';
+            document.getElementById('header-action-btn').textContent = 'İptal';
+            document.getElementById('header-action-btn').onclick = showList;
+            showView('view-wizard');
+            renderStep();
+        }
+
+        function renderProgress() {
+            document.getElementById('wizard-progress').innerHTML = STEPS.map((s, i) => {
+                const cls = i < currentStep ? 'done' : i === currentStep ? 'active' : '';
+                const line = i < STEPS.length - 1 ? `<div class="step-line ${i < currentStep ? 'done' : ''}"></div>` : '';
+                return `<div class="step-dot ${cls}" onclick="jumpStep(${i})">${i < currentStep ? '✓' : i + 1}</div>${line}`;
+            }).join('');
+        }
+
+        function jumpStep(i) {
+            if (i >= currentStep) return;
+            saveStepData();
+            currentStep = i;
+            renderStep();
+        }
+
+        function renderStep() {
+            renderProgress();
+            document.getElementById('step-label').textContent = STEPS[currentStep].label;
+            document.getElementById('step-title').textContent = STEPS[currentStep].title;
+            const isLast = currentStep === STEPS.length - 1;
+            const isFirst = currentStep === 0;
+            document.getElementById('wizard-nav').innerHTML = `
+    ${!isFirst ? `<button class="nav-back" onclick="prevStep()">← Geri</button>` : ''}
+    <button class="nav-next ${isLast ? 'nav-save' : ''}" onclick="nextStep()">
+      ${isLast ? '💾 Kaydet' : 'İleri →'}
+    </button>`;
+            const body = document.getElementById('step-body');
+            [renderStep0, renderStep1, renderStep2, renderStep3, renderStep4, renderStep5, renderStep6][currentStep](body);
+        }
+
+        function prevStep() { saveStepData(); currentStep--; renderStep(); }
+        function nextStep() { saveStepData(); if (currentStep === STEPS.length - 1) { finalSave(); return; } currentStep++; renderStep(); }
+
+        // ── ADIMLAR ───────────────────────────────────────────
+
+        function renderStep0(el) {
+            el.innerHTML = `
+  <div class="form-section">
+    <div class="form-grid">
+      <div class="field"><label>Marka</label><input id="s-brand" placeholder="örn: Hyundai WIA" value="${esc(draft.brand || '')}"></div>
+      <div class="field"><label>Model</label><input id="s-model" placeholder="örn: SKT200" value="${esc(draft.model || '')}"></div>
+      <div class="field"><label>Seri No</label><input id="s-serial" value="${esc(draft.serial || '')}"></div>
+      <div class="field"><label>Kontrol Tipi</label><input id="s-control" placeholder="örn: Fanuc 0i-TF" value="${esc(draft.control || '')}"></div>
+      <div class="field"><label>Üretim Yılı</label><input id="s-year" value="${esc(draft.year || '')}"></div>
+      <div class="field"><label>Müşteri / Firma</label><input id="s-customer" value="${esc(draft.customer || '')}"></div>
+    </div>
+  </div>`;
+        }
+        function saveStep0() {
+            draft.brand = val('s-brand'); draft.model = val('s-model'); draft.serial = val('s-serial');
+            draft.control = val('s-control'); draft.year = val('s-year'); draft.customer = val('s-customer');
+        }
+
+        function renderStep1(el) {
+            el.innerHTML = `
+  <div class="form-section">
+    <div class="field"><label>Arıza Tanımı</label>
+      <textarea id="s-fault" placeholder="Belirtiler, alarm kodları, müşteri beyanı...">${esc(draft.fault || '')}</textarea></div>
+  </div>
+  <div class="form-section">
+    <div class="form-section-title">Arıza Fotoğrafları</div>
+    <div class="photo-area" onclick="document.getElementById('photo-input').click()">
+      <div style="font-size:28px;margin-bottom:6px">📷</div>
+      <p>Fotoğraf ekle / kameradan çek</p>
+      <input type="file" id="photo-input" accept="image/*" multiple capture="environment" onchange="handlePhotos(event)">
+    </div>
+    <div class="photo-grid" id="photo-grid"></div>
+  </div>`;
+            renderPhotoGrid();
+        }
+        function saveStep1() { draft.fault = val('s-fault'); draft.photos = photoData; }
+
+        function renderStep2(el) {
+            el.innerHTML = `
+  <div class="form-section">
+    <div class="form-grid full">
+      <div class="field"><label>Alarm / Hata Kodları</label>
+        <input id="s-alarms" placeholder="örn: ALM 417, EX749..." value="${esc(draft.alarms || '')}"></div>
+      <div class="field"><label>Tespit Edilen Sorun</label>
+        <textarea id="s-diagnosis" placeholder="Teşhis, ölçümler, analiz...">${esc(draft.diagnosis || '')}</textarea></div>
+      <div class="field"><label>Ölçüm Değerleri</label>
+        <textarea id="s-measurements" placeholder="Voltaj, akım, basınç, devir vb...">${esc(draft.measurements || '')}</textarea></div>
+    </div>
+  </div>`;
+        }
+        function saveStep2() {
+            draft.alarms = val('s-alarms'); draft.diagnosis = val('s-diagnosis'); draft.measurements = val('s-measurements');
+        }
+
+        function renderStep3(el) {
+            if (!draft.attempts) draft.attempts = [];
+            el.innerHTML = `<div id="attempts-container"></div>
+    <button class="add-attempt-btn" onclick="addAttempt()">+ Yeni Deneme Ekle</button>`;
+            renderAttempts();
+        }
+
+        function renderAttempts() {
+            const c = document.getElementById('attempts-container');
+            if (!c) return;
+            if (!draft.attempts.length) {
+                c.innerHTML = `<div style="text-align:center;padding:30px 20px;color:var(--muted);font-size:13px;background:var(--card);border-radius:var(--radius);margin-bottom:12px">
+      Henüz deneme eklenmedi.<br><br>Her denemen için ayrı bir kart oluştur:<br>ne denedin, ne oldu, sonuç ne?
+    </div>`;
+                return;
+            }
+            c.innerHTML = draft.attempts.map((a, i) => `
+    <div class="attempt-card">
+      <div class="attempt-header">
+        <span class="attempt-num">🧪 Deneme ${i + 1}</span>
+        <button class="attempt-del" onclick="removeAttempt(${i})">Sil</button>
+      </div>
+      <div class="field" style="margin-bottom:10px">
+        <label>Ne denedim?</label>
+        <textarea id="a-tried-${i}" placeholder="Yapılan işlem, değiştirilen ayar, takılan parça...">${esc(a.tried || '')}</textarea>
+      </div>
+      <div class="field" style="margin-bottom:12px">
+        <label>Ne oldu?</label>
+        <textarea id="a-result-${i}" placeholder="Gözlemlenen değişiklik, yeni belirtiler, alarm değişimi...">${esc(a.result || '')}</textarea>
+      </div>
+      <div class="field">
+        <label>Sonuç</label>
+        <div class="result-grid">
+          ${[['solved', '✅ Çözüldü'], ['partial', '⚡ Kısmen İyileşti'], ['none', '❌ Değişmedi'], ['worse', '⬇ Kötüleşti'], ['waiting', '⏳ Bekleniyor']].map(([key, lbl]) =>
+                `<button class="result-btn ${a.outcome === key ? 'sel-' + key : ''}" onclick="setOutcome(${i},'${key}')">${lbl}</button>`
+            ).join('')}
+        </div>
+      </div>
+    </div>`).join('');
+        }
+
+        function addAttempt() {
+            saveAttemptsData();
+            draft.attempts.push({ tried: '', result: '', outcome: 'waiting' });
+            renderAttempts();
+        }
+        function removeAttempt(i) { saveAttemptsData(); draft.attempts.splice(i, 1); renderAttempts(); }
+        function setOutcome(i, key) { saveAttemptsData(); draft.attempts[i].outcome = key; renderAttempts(); }
+        function saveAttemptsData() {
+            (draft.attempts || []).forEach((a, i) => {
+                const t = document.getElementById(`a-tried-${i}`); const r = document.getElementById(`a-result-${i}`);
+                if (t) a.tried = t.value; if (r) a.result = r.value;
+            });
+        }
+        function saveStep3() { saveAttemptsData(); }
+
+        function renderStep4(el) {
+            el.innerHTML = `
+  <div class="form-section">
+    <div class="form-grid full">
+      <div class="field"><label>Kesin Çözüm / Yapılan Son İşlem</label>
+        <textarea id="s-solution" placeholder="Çözümü sağlayan adımlar...">${esc(draft.solution || '')}</textarea></div>
+      <div class="field"><label>Kullanılan Parçalar</label>
+        <textarea id="s-parts" placeholder="Parça adı, parça no, tedarik kaynağı...">${esc(draft.parts || '')}</textarea></div>
+    </div>
+  </div>
+  <div class="form-section">
+    <div class="form-grid">
+      <div class="field"><label>Durum</label>
+        <select id="s-status">
+          <option value="solved" ${(draft.status || 'solved') === 'solved' ? 'selected' : ''}>✅ Çözüldü</option>
+          <option value="open"   ${draft.status === 'open' ? 'selected' : ''}>🔴 Açık</option>
+          <option value="pending"${draft.status === 'pending' ? 'selected' : ''}>⏳ Beklemede</option>
+        </select></div>
+      <div class="field"><label>Tarih</label>
+        <input type="date" id="s-date" value="${draft.date || today()}"></div>
+    </div>
+  </div>`;
+        }
+        function saveStep4() {
+            draft.solution = val('s-solution'); draft.parts = val('s-parts');
+            draft.status = val('s-status') || 'solved'; draft.date = val('s-date') || today();
+        }
+
+        function renderStep5(el) {
+            if (!draft.params) draft.params = [];
+            el.innerHTML = `
+  <div class="form-section">
+    <div class="form-section-title">Parametre & Ayar Değerleri</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:8px;margin-bottom:8px;padding:0 2px">
+      <span style="font-size:11px;color:var(--muted)">Parametre Adı / No</span>
+      <span style="font-size:11px;color:var(--muted)">Değer</span><span></span>
+    </div>
+    <div id="param-list"></div>
+    <button class="add-param-btn" onclick="addParam()">+ Parametre Ekle</button>
+  </div>`;
+            renderParams();
+        }
+        function renderParams() {
+            const list = document.getElementById('param-list');
+            if (!list) return;
+            list.innerHTML = (draft.params || []).map((p, i) => `
+    <div class="param-row">
+      <input id="p-name-${i}" placeholder="örn: P1420" value="${esc(p.name || '')}">
+      <input id="p-val-${i}"  placeholder="örn: 3000"  value="${esc(p.value || '')}">
+      <button class="remove-btn" onclick="removeParam(${i})">×</button>
+    </div>`).join('');
+        }
+        function addParam() { saveParamData(); draft.params.push({ name: '', value: '' }); renderParams(); }
+        function removeParam(i) { saveParamData(); draft.params.splice(i, 1); renderParams(); }
+        function saveParamData() {
+            (draft.params || []).forEach((p, i) => {
+                const n = document.getElementById(`p-name-${i}`); const v = document.getElementById(`p-val-${i}`);
+                if (n) p.name = n.value; if (v) p.value = v.value;
+            });
+        }
+        function saveStep5() { saveParamData(); }
+
+        function renderStep6(el) {
+            const nAttempts = (draft.attempts || []).length;
+            const nSolved = (draft.attempts || []).filter(a => a.outcome === 'solved').length;
+            el.innerHTML = `
+  <div class="form-section" style="border-left:3px solid var(--gold)">
+    <div class="form-section-title">Özet</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.9">
+      <div>🔧 <b style="color:var(--text)">${esc((draft.brand || '') + ' ' + (draft.model || '')).trim() || 'Makina belirtilmedi'}</b>${draft.customer ? ' · ' + esc(draft.customer) : ''}</div>
+      ${draft.alarms ? `<div>🚨 Alarm: <b style="color:var(--text)">${esc(draft.alarms)}</b></div>` : ''}
+      <div>🧪 Deneme sayısı: <b style="color:var(--text)">${nAttempts}</b></div>
+      <div>✅ Çözüldü işaretlenen: <b style="color:#2ecc71">${nSolved}</b></div>
+    </div>
+  </div>
+  <div class="form-section">
+    <div class="field">
+      <label>Kişisel Notlar & Tecrübe</label>
+      <textarea id="s-notes" style="min-height:130px" placeholder="Bu işten çıkardığın dersler, bir dahaki sefere dikkat edilecek noktalar, benzer sorunlar için referans...">${esc(draft.notes || '')}</textarea>
+    </div>
+  </div>`;
+        }
+        function saveStep6() { draft.notes = val('s-notes'); }
+
+        function saveStepData() {
+            [saveStep0, saveStep1, saveStep2, saveStep3, saveStep4, saveStep5, saveStep6][currentStep]();
+        }
+
+        function finalSave() {
+            saveStepData();
+            const record = { ...draft, id: editingId || Date.now().toString(), updatedAt: new Date().toISOString(), photos: photoData };
+            let records = getRecords();
+            records = editingId ? records.map(r => r.id === editingId ? record : r) : [record, ...records];
+            saveRecords(records);
+            showToast(editingId ? 'Kayıt güncellendi ✓' : 'Kayıt kaydedildi ✓');
+            showList();
+        }
+
+        // ── LİSTE ─────────────────────────────────────────────
+        function setFilter(f, btn) {
+            currentFilter = f;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active'); renderList();
+        }
+
+        function renderList() {
+            const records = getRecords();
+            const q = (document.getElementById('search-input').value || '').toLowerCase();
+            const filtered = records.filter(r => {
+                const mf = currentFilter === 'all' || r.status === currentFilter;
+                const ms = !q || [r.brand, r.model, r.customer, r.fault, r.solution, r.serial, r.diagnosis, r.alarms]
+                    .some(v => v && v.toLowerCase().includes(q));
+                return mf && ms;
+            }).sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+
+            const total = records.length, solved = records.filter(r => r.status === 'solved').length, open = records.filter(r => r.status === 'open').length;
+            document.getElementById('stats-bar').innerHTML = `
+    <div class="stat-card"><div class="stat-num">${total}</div><div class="stat-lbl">Toplam</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#2ecc71">${solved}</div><div class="stat-lbl">Çözüldü</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#e74c3c">${open}</div><div class="stat-lbl">Açık</div></div>`;
+
+            const container = document.getElementById('records-list');
+            if (!filtered.length) {
+                container.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div><h3>${!records.length ? 'Henüz kayıt yok' : 'Sonuç bulunamadı'}</h3><p>${!records.length ? 'Yeni Kayıt butonuna basarak başla' : 'Farklı bir arama dene'}</p></div>`;
+                return;
+            }
+            const sl = { solved: 'Çözüldü', open: 'Açık', pending: 'Beklemede' };
+            const bc = { solved: 'badge-solved', open: 'badge-open', pending: 'badge-pending' };
+            const cc = { solved: 'solved', open: 'urgent', pending: 'pending' };
+            container.innerHTML = filtered.map(r => `
+    <div class="record-card ${cc[r.status] || ''}" onclick="showDetail('${r.id}')">
+      <div class="card-header">
+        <div>
+          <div class="card-machine">${esc(r.brand || '—')} ${esc(r.model || '')}</div>
+          <div class="card-sub">${esc(r.customer || '')}${r.serial ? ' · ' + esc(r.serial) : ''}</div>
+        </div>
+        <span class="card-badge ${bc[r.status] || ''}">${sl[r.status] || '—'}</span>
+      </div>
+      <div class="card-fault">${esc(r.fault || 'Arıza tanımı girilmemiş')}</div>
+      <div class="card-footer">
+        <span class="card-tag">📅 ${r.date || '—'}</span>
+        ${r.control ? `<span class="card-tag">⚙ ${esc(r.control)}</span>` : ''}
+        ${r.attempts && r.attempts.length ? `<span class="card-tag">🧪 ${r.attempts.length} deneme</span>` : ''}
+        ${r.photos && r.photos.length ? `<span class="card-tag">📷 ${r.photos.length}</span>` : ''}
+        ${r.params && r.params.length ? `<span class="card-tag">📊 ${r.params.length} param.</span>` : ''}
+      </div>
+    </div>`).join('');
+        }
+
+        // ── DETAY ─────────────────────────────────────────────
+        function showDetail(id) {
+            const r = getRecords().find(x => x.id === id); if (!r) return;
+            const sl = { solved: 'Çözüldü', open: 'Açık', pending: 'Beklemede' };
+            const bc = { solved: 'badge-solved', open: 'badge-open', pending: 'badge-pending' };
+            const outLabel = { solved: '✅ Çözüldü', partial: '⚡ Kısmen İyileşti', none: '❌ Değişmedi', worse: '⬇ Kötüleşti', waiting: '⏳ Bekleniyor' };
+            const outPill = { solved: 'pill-solved', partial: 'pill-partial', none: 'pill-none', worse: 'pill-worse', waiting: 'pill-waiting' };
+
+            const attempts = (r.attempts || []).map((a, i) => `
+    <div class="attempt-detail">
+      <div class="attempt-detail-num">🧪 Deneme ${i + 1}</div>
+      ${a.tried ? `<p style="font-size:12px;color:var(--muted);margin-bottom:3px">Ne denendi:</p><p style="font-size:14px;margin-bottom:8px">${esc(a.tried)}</p>` : ''}
+      ${a.result ? `<p style="font-size:12px;color:var(--muted);margin-bottom:3px">Ne oldu:</p><p style="font-size:14px;margin-bottom:8px">${esc(a.result)}</p>` : ''}
+      <span class="result-pill ${outPill[a.outcome] || 'pill-waiting'}">${outLabel[a.outcome] || '—'}</span>
+    </div>`).join('');
+
+            const params = (r.params || []).filter(p => p.name || p.value).map(p =>
+                `<tr><td>${esc(p.name)}</td><td style="font-family:monospace">${esc(p.value)}</td></tr>`).join('');
+
+            const photos = (r.photos || []).map(src =>
+                `<div class="photo-thumb"><img src="${src}" onclick="window.open('${src}','_blank')"></div>`).join('');
+
+            document.getElementById('detail-content').innerHTML = `
+    <div class="page-title">
+      <button class="back-btn" onclick="showList()">←</button>
+      <span>${esc(r.brand || '—')} ${esc(r.model || '')}</span>
+    </div>
+    <div class="detail-actions">
+      <button class="action-btn action-edit" onclick="editRecord('${r.id}')">✏ Düzenle</button>
+      <button class="action-btn action-delete" onclick="askDelete('${r.id}')">🗑 Sil</button>
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">Makina</div>
+      <div class="detail-grid">
+        <div class="detail-field"><label>Marka / Model</label><p>${esc(r.brand || '—')} ${esc(r.model || '')}</p></div>
+        <div class="detail-field"><label>Kontrol</label><p>${esc(r.control || '—')}</p></div>
+        <div class="detail-field"><label>Seri No</label><p>${esc(r.serial || '—')}</p></div>
+        <div class="detail-field"><label>Üretim Yılı</label><p>${esc(r.year || '—')}</p></div>
+        <div class="detail-field"><label>Müşteri</label><p>${esc(r.customer || '—')}</p></div>
+        <div class="detail-field"><label>Tarih / Durum</label><p>${esc(r.date || '—')} &nbsp;<span class="card-badge ${bc[r.status] || ''}">${sl[r.status] || '—'}</span></p></div>
+      </div>
+    </div>
+    ${r.fault ? `<div class="detail-section"><div class="detail-section-title">Arıza Tanımı</div><div class="detail-text">${esc(r.fault)}</div></div>` : ''}
+    ${photos ? `<div class="detail-section"><div class="detail-section-title">Arıza Fotoğrafları</div><div class="photo-grid">${photos}</div></div>` : ''}
+    ${r.alarms || r.diagnosis || r.measurements ? `
+    <div class="detail-section"><div class="detail-section-title">Teşhis</div>
+      ${r.alarms ? `<p style="font-size:12px;color:var(--muted);margin-bottom:6px">Alarm / Hata Kodları: <b style="color:#e74c3c">${esc(r.alarms)}</b></p>` : ''}
+      ${r.diagnosis ? `<div class="detail-text">${esc(r.diagnosis)}</div>` : ''}
+      ${r.measurements ? `<p style="font-size:13px;color:var(--muted);margin-top:8px">Ölçümler: ${esc(r.measurements)}</p>` : ''}
+    </div>`: ''}
+    ${attempts ? `<div class="detail-section"><div class="detail-section-title">Denemeler & Sonuçlar</div>${attempts}</div>` : ''}
+    ${r.solution ? `<div class="detail-section"><div class="detail-section-title">Kesin Çözüm</div><div class="detail-text">${esc(r.solution)}</div></div>` : ''}
+    ${r.parts ? `<div class="detail-section"><div class="detail-section-title">Kullanılan Parçalar</div><div class="detail-text">${esc(r.parts)}</div></div>` : ''}
+    ${params ? `<div class="detail-section"><div class="detail-section-title">Parametre & Ayar Değerleri</div>
+      <table class="param-table"><thead><tr><th>Parametre</th><th>Değer</th></tr></thead><tbody>${params}</tbody></table>
+    </div>`: ''}
+    ${r.notes ? `<div class="detail-section"><div class="detail-section-title">Kişisel Notlar</div><div class="detail-text">${esc(r.notes)}</div></div>` : ''}`;
+
+            document.getElementById('header-action-btn').textContent = '+ Yeni Kayıt';
+            document.getElementById('header-action-btn').onclick = startNewRecord;
+            document.getElementById('header-sub').textContent = 'Teknik Kayıt Sistemi';
+            showView('view-detail');
+        }
+
+        // ── FOTOĞRAF ──────────────────────────────────────────
+        function handlePhotos(e) {
+            Array.from(e.target.files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = ev => { photoData.push(ev.target.result); renderPhotoGrid(); };
+                reader.readAsDataURL(file);
+            });
+            e.target.value = '';
+        }
+        function renderPhotoGrid() {
+            const g = document.getElementById('photo-grid'); if (!g) return;
+            g.innerHTML = photoData.map((src, i) => `
+    <div class="photo-thumb"><img src="${src}">
+      <button class="del-photo" onclick="removePhoto(${i})">×</button>
+    </div>`).join('');
+        }
+        function removePhoto(i) { photoData.splice(i, 1); renderPhotoGrid(); }
+
+        // ── YARDIMCILAR ────────────────────────────────────────
+        function val(id) { const el = document.getElementById(id); return el ? el.value.trim() : ''; }
+        function esc(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+        function today() { return new Date().toISOString().slice(0, 10); }
+        function showToast(msg, err = false) {
+            const t = document.getElementById('toast'); t.textContent = msg; t.className = 'toast' + (err ? ' error' : '');
+            setTimeout(() => t.classList.add('show'), 10); setTimeout(() => t.classList.remove('show'), 2800);
+        }
+        function askDelete(id) { deleteId = id; document.getElementById('delete-overlay').classList.add('show'); }
+        function closeModal() { document.getElementById('delete-overlay').classList.remove('show'); deleteId = null; }
+        function confirmDelete() {
+            if (!deleteId) return;
+            const id = deleteId;
+            saveLocalRecords(getRecords().filter(r => r.id !== id));
+            deleteFromCloud(id);
+            closeModal(); showToast('Kayıt silindi'); showList();
+        }
+
+        renderList();
+        initFirebase();
+
+        // Service Worker kaydı (PWA - offline destek)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => { });
+            });
+        }
+    </script>
+</body>
