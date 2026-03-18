@@ -1,4 +1,4 @@
-const CACHE = 'seckin-v1';
+const CACHE = 'seckin-v3';
 const FILES = ['/', '/index.html', '/manifest.json'];
 
 self.addEventListener('install', e => {
