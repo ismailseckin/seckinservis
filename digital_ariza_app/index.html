@@ -1814,7 +1814,9 @@
             closeModal(); showToast('Kayıt silindi'); showList();
         }
 
-        renderList();
+        // Başlangıçta giriş ekranını göster (Firebase auth kontrolü yapılana kadar)
+        document.getElementById('login-screen').classList.add('show');
+        document.getElementById('logout-btn').style.display = 'none';
         initFirebase();
 
         // Service Worker kaydı (PWA - offline destek)
