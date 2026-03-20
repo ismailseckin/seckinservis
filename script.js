@@ -53,10 +53,10 @@ const form    = document.getElementById('contactForm');
 const success = document.getElementById('formSuccess');
 const submitBtn = document.getElementById('form-submit');
 
-form.addEventListener('submit', e => {
+form.addEventListener('submit', async e => {
   e.preventDefault();
 
-  // Simple validation
+  // Validasyon
   const name    = document.getElementById('name').value.trim();
   const phone   = document.getElementById('phone').value.trim();
   const service = document.getElementById('service').value;
@@ -66,20 +66,39 @@ form.addEventListener('submit', e => {
     return;
   }
 
-  // Simulate sending (replace with actual backend/email service)
+  // Gönderiliyor durumu
   submitBtn.disabled = true;
   submitBtn.innerHTML = '<span>⏳</span> Gönderiliyor...';
 
-  setTimeout(() => {
-    form.style.opacity = '0';
-    form.style.transform = 'translateY(-10px)';
-    form.style.transition = 'opacity 0.4s, transform 0.4s';
-    setTimeout(() => {
-      form.style.display = 'none';
-      success.style.display = 'block';
-      success.style.animation = 'fadeIn 0.5s ease forwards';
-    }, 400);
-  }, 1400);
+  try {
+    const formData = new FormData(form);
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+    const data = await response.json();
+
+    if (data.success) {
+      // Başarılı
+      form.style.opacity = '0';
+      form.style.transform = 'translateY(-10px)';
+      form.style.transition = 'opacity 0.4s, transform 0.4s';
+      setTimeout(() => {
+        form.style.display = 'none';
+        success.style.display = 'block';
+        success.style.animation = 'fadeIn 0.5s ease forwards';
+      }, 400);
+    } else {
+      // Hata
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<span>📤</span> Teklif Talebi Gönder';
+      alert('Gönderilemedi, lütfen tekrar deneyin veya WhatsApp ile ulaşın.');
+    }
+  } catch (err) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<span>📤</span> Teklif Talebi Gönder';
+    alert('Bağlantı hatası. Lütfen WhatsApp veya telefon ile ulaşın.');
+  }
 });
 
 function shakeForm() {
